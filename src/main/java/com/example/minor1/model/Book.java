@@ -7,6 +7,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Getter
@@ -39,6 +40,14 @@ public class Book {
     @JoinColumn
     //student Id is a foreign key in Book Table.
     private Student student;
+
+    @OneToMany(mappedBy="my_book")
+    private List<Transaction> transactionList;
+
+    @ManyToOne
+    @JoinColumn
+    //Author will be a foreign key in book Table.
+    private Author author;
 
 
 

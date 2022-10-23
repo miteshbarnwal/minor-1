@@ -35,6 +35,9 @@ public class Student {
     //We dont want duplicate data in email Id.It can be null but cant have duplicate value.
     private String email;
 
+    @Enumerated(value=EnumType.STRING)
+    private AccountStatus accountStatus;
+
     @CreationTimestamp
     // It is important to have data related to When the student was created i.e. at what date and time
     private Date createdOn;
@@ -51,5 +54,8 @@ public class Student {
 
 //    @OneToMany(mappedBy = "my_student")
     //One student can have many transaction
-//    private List<Transaction> transactionList;
+
+    @OneToMany(mappedBy = "my_student")
+    private List<Transaction> transactionList;
+
 }
